@@ -9,7 +9,7 @@
     @close="handleClose"
     :collapse="isCollapse"
   >
-    <h3>{{isCollapse? '后台':'通用后台管理系统'}}</h3>
+    <h3>{{ isCollapse ? "后台" : "通用后台管理系统" }}</h3>
     <el-menu-item
       @click="clickMenu(item)"
       v-for="item in noChildren"
@@ -28,7 +28,9 @@
         v-for="(subItem, subIndex) in item.children"
         :key="subItem.path"
       >
-        <el-menu-item :index="subIndex">{{ subItem.label }}</el-menu-item>
+        <el-menu-item @click="clickMenu(subItem)" :index="subIndex">{{
+          subItem.label
+        }}</el-menu-item>
       </el-menu-item-group>
     </el-submenu>
   </el-menu>
@@ -42,7 +44,7 @@
 .el-menu {
   height: 100%;
   border: none;
-  background: #000;
+  // background: #000;
   h3 {
     color: #fff;
     text-align: center;
@@ -85,14 +87,14 @@ export default {
           children: [
             {
               path: "/page1",
-              name: "vuePage1",
+              name: "vuePageOne",
               label: "页面1",
               icon: "setting",
               url: "Other/PageOne",
             },
             {
               path: "/page2",
-              name: "vuePage2",
+              name: "vuePageTwo",
               label: "页面2",
               icon: "setting",
               url: "Other/PageTwo",
@@ -113,6 +115,7 @@ export default {
       this.$router.push({
         name: item.name,
       });
+      this.$store.commit("selectMenu", item);
     },
   },
   computed: {
@@ -122,9 +125,9 @@ export default {
     hasChildren() {
       return this.menu.filter((item) => item.children);
     },
-    isCollapse(){
-      return this.$store.state.tab.isCollapse
-    }
+    isCollapse() {
+      return this.$store.state.tab.isCollapse;
+    },
   },
 };
 </script>

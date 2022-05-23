@@ -1,35 +1,47 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from "vue";
+import VueRouter from "vue-router";
 // import Home from '../views/Home.vue'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
-const routes=[{
-    path:'/',
-    name:'vueMain',
+const routes = [
+  {
+    path: "/",
+    name: "vueMain",
     // component:Home
-    component:()=>import('../views/Main.vue'),
-    children:[
-        {
-            path:'/home',
-            name:'vueHome',
-            component:()=>import('../views/Home')
-            
-        },
-        {
-            path:'/user',
-            name:'vueUser',
-            component:()=>import('../views/User')
-            
-        }
-        
-    ]
-}
+    component: () => import("../views/Main.vue"),
+    children: [
+      {
+        path: "/home",
+        name: "vueHome",
+        component: () => import("../views/Home"),
+      },
+      {
+        path: "/user",
+        name: "vueUser",
+        component: () => import("../views/User"),
+      },
+      {
+        path: "/mall",
+        name: "vueMall",
+        component: () => import("../views/Mall"),
+      },
+      {
+        path: "/page1",
+        name: "vuePageOne",
+        component: () => import("../views/Other/pageOne.vue"),
+      },
+      {
+        path: "/page2",
+        name: "vuePageTwo",
+        component: () => import("../views/Other/pageTwo.vue"),
+      },
+    ],
+  },
+];
+const router = new VueRouter({
+  mode: "history",
+  routes,
+});
 
-]
-const router=new VueRouter({
-    mode:'history',
-    routes
-})
-
-export default router
+export default router;
