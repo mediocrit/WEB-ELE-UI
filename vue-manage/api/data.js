@@ -13,3 +13,12 @@ export const getDate=()=>{
         url:'/Home/getDate'
     })
 }
+
+export const getUser=(params)=>{
+    return axios.request({
+        url:'/User/getUser',
+        method:'get',
+        params
+    })
+}
+

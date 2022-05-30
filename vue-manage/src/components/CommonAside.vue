@@ -58,50 +58,51 @@
 export default {
   data() {
     return {
-      menu: [
-        {
-          path: "/",
-          name: "vueHome",
-          label: "首页",
-          icon: "s-home",
-          url: "Home/Home",
-        },
-        {
-          path: "/mall",
-          name: "vueMall",
-          label: "商品管理",
-          icon: "video-play",
-          url: "MallManage/MallManage",
-        },
-        {
-          path: "/user",
-          name: "vueUser",
-          label: "用户管理",
-          icon: "user",
-          url: "UserManage/UserManage",
-        },
-        {
-          path: "/other",
-          label: "其他",
-          icon: "location",
-          children: [
-            {
-              path: "/page1",
-              name: "vuePageOne",
-              label: "页面1",
-              icon: "setting",
-              url: "Other/PageOne",
-            },
-            {
-              path: "/page2",
-              name: "vuePageTwo",
-              label: "页面2",
-              icon: "setting",
-              url: "Other/PageTwo",
-            },
-          ],
-        },
-      ],
+      menu: []
+      // menu: [
+      //   {
+      //     path: "/",
+      //     name: "vueHome",
+      //     label: "首页",
+      //     icon: "s-home",
+      //     url: "Home/Home",
+      //   },
+      //   {
+      //     path: "/mall",
+      //     name: "vueMall",
+      //     label: "商品管理",
+      //     icon: "video-play",
+      //     url: "MallManage/MallManage",
+      //   },
+      //   {
+      //     path: "/user",
+      //     name: "vueUser",
+      //     label: "用户管理",
+      //     icon: "user",
+      //     url: "UserManage/UserManage",
+      //   },
+      //   {
+      //     path: "/other",
+      //     label: "其他",
+      //     icon: "location",
+      //     children: [
+      //       {
+      //         path: "/page1",
+      //         name: "vuePageOne",
+      //         label: "页面1",
+      //         icon: "setting",
+      //         url: "Other/PageOne",
+      //       },
+      //       {
+      //         path: "/page2",
+      //         name: "vuePageTwo",
+      //         label: "页面2",
+      //         icon: "setting",
+      //         url: "Other/PageTwo",
+      //       },
+      //     ],
+      //   },
+      // ],
     };
   },
   methods: {
@@ -120,14 +121,21 @@ export default {
   },
   computed: {
     noChildren() {
-      return this.menu.filter((item) => !item.children);
+      // return this.menu.filter((item) => !item.children);
+      // console.log(this.asyncMenu.filter((item) => !item.children))
+      return this.asyncMenu.filter((item) => !item.children);
     },
     hasChildren() {
-      return this.menu.filter((item) => item.children);
+      // return this.menu.filter((item) => item.children);
+      // console.log(this.asyncMenu.filter((item) => item.children))
+      return this.asyncMenu.filter((item) => item.children);
     },
     isCollapse() {
       return this.$store.state.tab.isCollapse;
     },
+    asyncMenu(){
+      return this.$store.state.tab.menu
+    }
   },
 };
 </script>
