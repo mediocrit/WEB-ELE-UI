@@ -19,7 +19,7 @@ export default {
             //     url: 'home/index'
             // },
             {
-              path: "/",
+              path: "/home",
               name: "vueHome",
               label: "首页",
               icon: "s-home",
@@ -33,7 +33,7 @@ export default {
             //     url: 'mall/index.vue'
             // },
             {
-              path: "/mall",
+              path: "/mall1",
               name: "vueMall",
               label: "商品管理",
               icon: "video-play",
@@ -122,7 +122,7 @@ export default {
             //   url: "mall/index",
             // },
             {
-              path: "/",
+              path: "/home",
               name: "vueHome",
               label: "首页",
               icon: "s-home",

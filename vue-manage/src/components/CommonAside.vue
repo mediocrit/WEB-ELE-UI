@@ -5,11 +5,10 @@
     text-color="#fff"
     active-text-color="#ffd04b"
     class="el-menu-vertical-demo"
-    @open="handleOpen"
-    @close="handleClose"
     :collapse="isCollapse"
   >
     <h3>{{ isCollapse ? "后台" : "通用后台管理系统" }}</h3>
+    <!-- 包含首页、商品、用户界面 -->
     <el-menu-item
       @click="clickMenu(item)"
       v-for="item in noChildren"
@@ -19,6 +18,8 @@
       <i :class="'el-icon-' + item.icon"></i>
       <span :slot="title">{{ item.label }}</span>
     </el-menu-item>
+
+    <!-- 其他界面：page1和page2 -->
     <el-submenu v-for="item in hasChildren" :index="item.path" :key="item.path">
       <template slot="title">
         <i :class="'el-icon-' + item.icon"></i>
@@ -28,11 +29,12 @@
         v-for="(subItem, subIndex) in item.children"
         :key="subItem.path"
       >
-        <el-menu-item @click="clickMenu(subItem)" :index="subIndex">{{
-          subItem.label
-        }}</el-menu-item>
+        <el-menu-item @click="clickMenu(subItem)" :index="subIndex">
+          {{ subItem.label }}
+        </el-menu-item>
       </el-menu-item-group>
     </el-submenu>
+    
   </el-menu>
 </template>
 
@@ -58,7 +60,7 @@
 export default {
   data() {
     return {
-      menu: []
+      menu: [],
       // menu: [
       //   {
       //     path: "/",
@@ -106,12 +108,6 @@ export default {
     };
   },
   methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
-    },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
-    },
     clickMenu(item) {
       this.$router.push({
         name: item.name,
@@ -133,9 +129,9 @@ export default {
     isCollapse() {
       return this.$store.state.tab.isCollapse;
     },
-    asyncMenu(){
-      return this.$store.state.tab.menu
-    }
+    asyncMenu() {
+      return this.$store.state.tab.menu;
+    },
   },
 };
 </script>

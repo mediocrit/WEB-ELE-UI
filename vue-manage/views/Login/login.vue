@@ -40,6 +40,7 @@
 <script>
 // import Mock from "mockjs";
 import { getMenu } from "../../api/data";
+import router from 'vue-router'
 export default {
   name: "vueLogin",
   data() {
@@ -63,6 +64,7 @@ export default {
       getMenu(this.form).then(({data:res}) => {
         if (res.code === 20000) {
           console.log(11111)
+          console.log(router)
           this.$store.commit('clearMenu')
           this.$store.commit('setMenu',res.data.menu)
           this.$store.commit('setToken',res.data.token)
